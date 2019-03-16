@@ -23,6 +23,16 @@
             <input type="text" name="juros" placeholder="Ex: 2.5">
             <input type="submit" name="Gerar">
         </form>
+        <%
+        if(request.getParameter("Gerar")!=null){
+            try{
+                
+            
+            }catch(Exception e){
+            }
+            
+        }
+        %>
             
         <%@include file="WEB-INF/jspf/footer.jspf"%>
     </body>
