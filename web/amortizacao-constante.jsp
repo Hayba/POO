@@ -16,19 +16,44 @@
         <h1>Sistema de Amortização Constante</h1>
         <form>
             insira valor do montante
-            <input type="text" name="montante" placeholder="Ex: 10000">
+            <input type="text" name="montante" placeholder="Ex: 10000"/>
             insira o número de parcelas
-            <input type="text" name="parcelas" placeholder="Ex: 10">
+            <input type="text" name="parcelas" placeholder="Ex: 10"/>
             insira o valor do juros ao mês
-            <input type="text" name="juros" placeholder="Ex: 2.5">
-            <input type="submit" name="Gerar">
+            <input type="text" name="juros" placeholder="Ex: 2.5"/>
+            <input type="submit" name="gerar" value="Gerar"/>
         </form>
-        <%
-        if(request.getParameter("Gerar")!=null){
+        <%if(request.getParameter("gerar")!=null){
             try{
-                
+                double montante = Double.parseDouble(request.getParameter("montante"));
+                double parcela = Double.parseDouble(request.getParameter("parcelas"));
+                double juros = Double.parseDouble(request.getParameter("juros"))/100;
+                double amortizacao = montante/parcela;
+                double devedor = montante;
+                double valorjuros;
+                double prestacao;
+            %>    
             
-            }catch(Exception e){
+                <hr/>
+                    <table border="1">
+                        <tr><th>Parcela</th><th>Saldo Devedor</th><th>Juros</th><th>Valor da Amortização</th><th>Prestação</th></tr>
+                        <%for(int i=1; i<=parcela; i++){%>
+                        <tr>
+                            <td><%=i%></td>
+                            <td><%=montante%></td>
+                            <td><%=valorjuros=juros*montante%></td>
+                            <td><%=amortizacao%></td>
+                            <td><%=prestacao = amortizacao+valorjuros%></td>
+                            
+                        </tr>
+                        <%montante=montante-amortizacao;%>
+                        <%}%>
+                    </table>   
+            <%
+                }catch(Exception e){
+                    %>
+                    Valor invalido
+                <%
             }
             
         }
