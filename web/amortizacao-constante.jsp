@@ -12,17 +12,20 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%@include file="WEB-INF/jspf/header.jspf" %>
         <%@include file="WEB-INF/jspf/menu.jspf" %>
-        <h1>Sistema de Amortização Constante</h1>
+        <h1><center>Sistema de Amortização Constante</center></h1>
+        <hr/>
+        
         <form>
-            insira valor do montante
+            Valor Financiado: 
             <input type="text" name="montante" placeholder="Ex: 10000"/>
-            insira o número de parcelas
+            Numero de Meses: 
             <input type="text" name="parcelas" placeholder="Ex: 10"/>
-            insira o valor do juros ao mês
+            Taxa Juros "%": 
             <input type="text" name="juros" placeholder="Ex: 2.5"/>
             <input type="submit" name="gerar" value="Gerar"/>
+            <br>
+            <br>
         </form>
         <%if(request.getParameter("gerar")!=null){
             try{
